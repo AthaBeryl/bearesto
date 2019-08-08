@@ -34,7 +34,7 @@
                                             <label class="form-control-label col-lg-3">Jabatan</label>
                                                 <div class="col-lg-9">
                                                 <div class="m-form__control">
-                                                <select class="form-control" name="jenis" required autofocus>
+                                                <select class="form-control" name="role" required autofocus>
                                                       @foreach($roles as $role)
                                                       <option value="{{$role->id}}">{{$role->name}}</option>
                                                       @endforeach

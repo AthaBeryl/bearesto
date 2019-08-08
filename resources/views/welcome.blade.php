@@ -91,8 +91,9 @@
                 <br>
                 <div class="card-columns">
                 @forelse ($menu as $item)
-                <input type="hidden" name="menu[]" value="{{$item->menu}}">
-                <input type="hidden" name="harga[]" value="{{$item->harga}}">
+                <input type="hidden" name="selected[]" value="{{$item->id}}">
+                <input type="hidden" name="{{$item->id}}[]" value="{{$item->id}}">
+                <input type="hidden" name="{{$item->id}}[]" value="{{$item->harga}}">
                 <div class="card" style="width: 18rem;">
                 <img src="{{asset('image/produk/'.$item->gambar)}}" class="card-img-top" alt="..." style="object-fit:cover;height:250px">
                 <div class="card-body">
@@ -102,10 +103,10 @@
                  <ul class="list-group list-group-flush">
                    <li class="list-group-item">Rp.{{number_format($item->harga)}},00</li>
                    <li class="list-group-item">
-                   <input type="text" class="form-control" placeholder="Jumlah" name="jumlah[{{$item->id}}]" >
+                   <input type="text" class="form-control" placeholder="Jumlah" name="{{$item->id}}[]" >
                    </li>
                    <li class="list-group-item">
-                   <input type="text" class="form-control" placeholder="Keterangan (Misal Tidak Pedas)" name="keterangan[{{$item->id}}]">
+                   <input type="text" class="form-control" placeholder="Keterangan (Misal Tidak Pedas)" name="{{$item->id}}[]">
                    </li>
                  </ul>
             </div>
@@ -115,13 +116,15 @@
             </div>
             <hr>
             <h4><center>Meja</center></h4>
+            <div class="container">
             <select class="form-control" name="meja" required autofocus>
                     @foreach($meja as $m)
                     <option value="{{$m->meja}}">{{$m->meja}}</option>
                     @endforeach
                </select>
             <br>
-            <button class="btn btn-success">Order</button>
+            <button class="btn btn-success" onclick="return confirm('Sudah Yakin Dengan Pesanan Anda ?')">Order</button>
+        </div>
             </form>
 
 
@@ -129,6 +132,7 @@
 
 
 </div>
+<br>
             </div>
         </div>
         </div>

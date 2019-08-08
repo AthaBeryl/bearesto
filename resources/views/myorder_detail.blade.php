@@ -86,6 +86,12 @@
                    Bearesto
                 </div>
                 <hr>
+                @if (session('success'))
+                <div class="alert alert-success" role="alert">
+                        {{ session('success') }}
+                </div>
+                <hr>
+                @endif
                 <h3>Daftar Order Yang Kamu Pesan</h3>
                 <br>
                 <br>
@@ -111,11 +117,17 @@
                             <td>{{$me->keterangan}}</td>
                             <td>{{$me->status}}</td>
                             @empty
-                            <td colspan="4"><center>Belum Ada Pesanan Untuk Meja Ini</center></td>
+                            <td colspan="5"><center>Belum Ada Pesanan Untuk Meja Ini</center></td>
                             @endforelse
                             </tr>
                         </tbody>
                         </table>
+                        <hr>
+                    <h3>Total : Rp.{{number_format($order->sum('subtotal'))}},00</h3>
+                    @if (session('success'))
+                    <h5>Segera Bayar Pesanan Anda , Kami Otomatis Membatalkan Pesanan Jika Pembayaran > 15 Menit</h5>
+                    @endif
+                    <br>
 
 
 

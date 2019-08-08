@@ -57,9 +57,9 @@ class PegawaiController extends Controller
         $this->validate($request,[
             'gambar' => 'mimes:jpg,jpeg,png',
             ]);
-
-        if($request->password != null){
         $content=User::find($request->id);
+        if($request->password != null){
+
         $content->update([
             'name' =>$request->name,
             'email' => $request->email,
@@ -68,14 +68,15 @@ class PegawaiController extends Controller
 
         }
         else{
-            $content=User::find($request->id);
+
             $content->update([
                 'name' =>$request->name,
                 'email' => $request->email,
                 ]);
         }
-        $content->removeRole();
+        $content->removeRole($content->roles()->detach());
         $content->assignRole($request->role);
+
 
        return redirect('pegawai/')
        ->with(['success' => 'Menu <strong>' . $request->name . '</strong> Telah Berhasil Ditambahkan']);
@@ -85,7 +86,7 @@ class PegawaiController extends Controller
     {
         $menu=User::find($id);
         $menu->delete();
-        $menu->removeRole();
+        $menu->removeRole($menu->roles()->detach());
         return redirect('pegawai')
                 ->with(['success' => 'Menu <strong>' . $menu->menu . '</strong> Telah Berhasil Dihapus']);
     }

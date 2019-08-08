@@ -43,7 +43,7 @@ class MenuController extends Controller
 
     public function view()
     {
-        $menu=menu::orderby('menu','asc')->get();
+        $menu=menu::orderby('jenis','asc')->orderby('menu','asc')->get();
         return view('menu.view',['menu'=>$menu]);
     }
 

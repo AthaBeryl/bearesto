@@ -38,14 +38,14 @@ Route::group(['prefix' => 'pegawai', 'middleware' => 'role:owner'], function() {
     Route::get('/search','PegawaiController@search')->name('pegawai.search');
 });
 
-Route::group(['prefix' => 'pegawai', 'middleware' => 'role:owner'], function() {
-    Route::get('/', 'PegawaiController@view')->name('pegawai.view');
-    Route::get('/create', 'PegawaiController@create')->name('pegawai.create');
-    Route::post('/create', 'PegawaiController@submit')->name('pegawai.submit');
-    Route::get('/edit/{id}','PegawaiController@edit')->name('pegawai.edit');
-    Route::put('/update','PegawaiController@update')->name('pegawai.update');
-    Route::delete('/delete/{id}','PegawaiController@delete')->name('pegawai.delete');
-    Route::get('/search','PegawaiController@search')->name('pegawai.search');
+Route::group(['prefix' => 'jenis', 'middleware' => 'role:owner'], function() {
+    Route::get('/', 'jenisController@view')->name('jenis.view');
+    Route::get('/create', 'jenisController@create')->name('jenis.create');
+    Route::post('/create', 'jenisController@submit')->name('jenis.submit');
+    Route::get('/edit/{id}','jenisController@edit')->name('jenis.edit');
+    Route::put('/update','jenisController@update')->name('jenis.update');
+    Route::delete('/delete/{id}','jenisController@delete')->name('jenis.delete');
+    Route::get('/search','jenisController@search')->name('jenis.search');
 });
 
 Route::group(['prefix' => 'meja', 'middleware' => 'role:owner'], function() {
